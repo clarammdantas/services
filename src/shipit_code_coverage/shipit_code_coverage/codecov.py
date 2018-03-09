@@ -257,7 +257,7 @@ class CodeCov(object):
         else:
             mkdir('code-coverage-reports')
 
-            self.generate_suite_reports()
+            # self.generate_suite_reports()
 
             self.generate_zero_coverage_report()
 
