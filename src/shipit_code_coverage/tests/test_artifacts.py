@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+import pytest
 from cli_common import utils
 from shipit_code_coverage.artifacts import ArtifactsHandler
 
@@ -68,3 +69,18 @@ def test_get_coverage_artifacts():
 
     for f in FILES:
         os.remove(f)
+
+
+TEST_TASK = {'task' : {'metadata' : {'name' : 'test-linux64-ccov/opt/test'}},
+             'status' : { 'taskId' : 1 }}
+
+@pytest.fixture
+def test_download():
+    util.mkdir('ccov-artifacts')
+
+    for f in FILES:
+        open(f, 'w')
+        
+    a = ArtifactsHandler([], [])
+    
+    a.download(TEST_TASK)
